@@ -1,26 +1,35 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
+    "noImplicitAny": false, // 不需要显式的声明变量的类型any
+    "target": "es5", // 编译后的目标JS版本
+    "lib": [ // 编译时需要的库
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    "allowJs": true,
-    "skipLibCheck": true,
+    "allowJs": true, // 允许混合编译JS文件
+    "skipLibCheck": true, // 跳过声明文件（d.ts文件）的类型检查，可以提高编译速度 
+    /** 
+     * 允许使用commonJs的形式import默认的文件
+     * before : import * as React form 'react'
+     * after : import React from 'react'
+     */
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true, // 允许对同一个文件的不一致的引用。
+    "noFallthroughCasesInSwitch": true, // 不报告switch语句的fallthrough错误。（即，允许switch的case语句贯穿）
+    "module": "esnext", // 配置代码的模块系统
+    "moduleResolution": "node", // 决定了编译器的工作方式
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "isolatedModules": true, // 编译器会将每个文件作为单独的模块来使用
+    "noEmit": true, // 当发生编译错误时，不生成JS文件
+    "jsx": "react-jsx", // 允许编译器支持编译React代码
+    "plugins": [{
+      "name": "typescript-plugin-css-modules"
+    }]
   },
-  "include": [
+  "include": [ // 编译包含的目录
     "src"
   ]
 }
